@@ -7,6 +7,7 @@ type Props = {
   placeholder: string;
   value: string;
   size: "xs" | "sm" | "md" | "lg";
+  backgroundColor: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -14,6 +15,7 @@ export const PasswordInput: VFC<Props> = ({
   placeholder,
   value,
   size,
+  backgroundColor,
   onChange,
 }) => {
   const [show, setShow] = useState(false);
@@ -26,6 +28,7 @@ export const PasswordInput: VFC<Props> = ({
         size={size}
         placeholder={placeholder}
         value={value}
+        backgroundColor={backgroundColor}
         onChange={onChange}
       />
       <InputRightElement w="3rem" h="full">

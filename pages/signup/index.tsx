@@ -19,7 +19,7 @@ const SignUp: VFC = () => {
 
   return (
     <Flex w="full" align="center" justifyContent="center">
-      <Box w="320px" mt="130px">
+      <Box w="320px" mt="120px">
         <Box textAlign="center">
           <Text fontSize="2xl">アカウント登録</Text>
         </Box>
@@ -33,6 +33,7 @@ const SignUp: VFC = () => {
                 placeholder="メールアドレス"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                backgroundColor="gray.100"
               />
             </FormControl>
             <FormControl isRequired mt={8}>
@@ -41,6 +42,7 @@ const SignUp: VFC = () => {
                 placeholder="パスワード"
                 size="lg"
                 value={password}
+                backgroundColor="gray.100"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </FormControl>
@@ -50,6 +52,7 @@ const SignUp: VFC = () => {
               colorScheme="blue"
               mt={12}
               width="full"
+              variant="outline"
             >
               登録する
             </Button>
