@@ -58,7 +58,7 @@ const Login: VFC = () => {
               ログイン
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link href="/password/reset">
+              <Link href="/password/new">
                 <Button color="blue.500" variant="link" fontWeight={400}>
                   パスワードをお忘れの方はこちら
                 </Button>

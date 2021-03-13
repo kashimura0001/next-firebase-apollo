@@ -8,7 +8,7 @@ import { Input } from "@chakra-ui/input";
 import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
-const PasswordReset: VFC = () => {
+const PasswordNew: VFC = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = () => {
@@ -59,4 +59,4 @@ const PasswordReset: VFC = () => {
   );
 };
 
-export default PasswordReset;
+export default PasswordNew;
