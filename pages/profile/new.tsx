@@ -5,7 +5,8 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
-import { Flex, Box, Button, Text, Link } from "@chakra-ui/react";
+import { Flex, Box, Button, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const ProfileNew: VFC = () => {
   const [name, setName] = useState("");
@@ -44,8 +45,10 @@ const ProfileNew: VFC = () => {
               登録する
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link color="blue.500" href="/login">
-                ログイン画面へ戻る
+              <Link href="/login">
+                <Button color="blue.500" variant="link" fontWeight={400}>
+                  ログイン画面へ戻る
+                </Button>
               </Link>
             </Box>
           </form>

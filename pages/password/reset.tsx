@@ -5,7 +5,8 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/form-control";
 import { Input } from "@chakra-ui/input";
-import { Flex, Box, Button, Text, Link } from "@chakra-ui/react";
+import { Flex, Box, Button, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const PasswordReset: VFC = () => {
   const [email, setEmail] = useState("");
@@ -45,8 +46,10 @@ const PasswordReset: VFC = () => {
               送信する
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link color="blue.500" href="/login">
-                戻る
+              <Link href="/login">
+                <Button color="blue.500" variant="link" fontWeight={400}>
+                  戻る
+                </Button>
               </Link>
             </Box>
           </form>
