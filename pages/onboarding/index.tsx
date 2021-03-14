@@ -8,7 +8,7 @@ import { Input } from "@chakra-ui/input";
 import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
-const ProfileNew: VFC = () => {
+const Onboarding: VFC = () => {
   const [name, setName] = useState("");
 
   const handleSubmit = () => {
@@ -58,4 +58,4 @@ const ProfileNew: VFC = () => {
   );
 };
 
-export default ProfileNew;
+export default Onboarding;
