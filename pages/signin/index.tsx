@@ -8,8 +8,9 @@ import { Input } from "@chakra-ui/input";
 import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import { PasswordInput } from "../../components/PasswordInput";
 import Link from "next/link";
+import { Route } from "../../config/routes";
 
-const Login: VFC = () => {
+const SignIn: VFC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -58,14 +59,14 @@ const Login: VFC = () => {
               ログイン
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link href="/password/new">
+              <Link href={Route.PASSWORD_NEW}>
                 <Button color="blue.500" variant="link" fontWeight={400}>
                   パスワードをお忘れの方はこちら
                 </Button>
               </Link>
             </Box>
             <Box textAlign="center" mt={4}>
-              <Link href="/signup">
+              <Link href={Route.SIGN_UP}>
                 <Button color="blue.500" variant="link" fontWeight={400}>
                   未登録の方はこちら
                 </Button>
@@ -78,4 +79,4 @@ const Login: VFC = () => {
   );
 };
 
-export default Login;
+export default SignIn;

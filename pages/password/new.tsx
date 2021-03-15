@@ -7,6 +7,7 @@ import {
 import { Input } from "@chakra-ui/input";
 import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { Route } from "../../config/routes";
 
 const PasswordNew: VFC = () => {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const PasswordNew: VFC = () => {
               送信する
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link href="/login">
+              <Link href={Route.SIGN_IN}>
                 <Button color="blue.500" variant="link" fontWeight={400}>
                   戻る
                 </Button>

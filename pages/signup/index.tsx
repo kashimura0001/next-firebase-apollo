@@ -8,14 +8,18 @@ import { Input } from "@chakra-ui/input";
 import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import { PasswordInput } from "../../components/PasswordInput";
 import Link from "next/link";
+import Router from "next/router";
+import { Route } from "../../config/routes";
+import firebase from "firebase";
 
 const SignUp: VFC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    // TODO: アカウント登録処理を実装する
-    alert("hoge");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    await Router.push(Route.ONBOARDING);
   };
 
   return (
@@ -58,7 +62,7 @@ const SignUp: VFC = () => {
               登録する
             </Button>
             <Box textAlign="center" mt={8}>
-              <Link href="login">
+              <Link href={Route.SIGN_IN}>
                 <Button color="blue.500" variant="link" fontWeight={400}>
                   アカウントをお持ちの方はこちら
                 </Button>
