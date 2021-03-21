@@ -10,15 +10,16 @@ import { PasswordInput } from "../../components/PasswordInput";
 import Link from "next/link";
 import Router from "next/router";
 import { Route } from "../../config/routes";
-import firebase from "firebase";
+import { useAuth } from "../../hooks/useAuth";
 
 const SignUp: VFC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signUpEmail } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    await signUpEmail(email, password);
     await Router.push(Route.ONBOARDING);
   };
 

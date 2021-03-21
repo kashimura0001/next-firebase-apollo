@@ -1,34 +1,23 @@
-import "../lib/firebase";
 import "../styles/globals.css";
-import React, { useEffect, useState } from "react";
-import firebase from "firebase";
-import { RecoilRoot, useSetRecoilState } from "recoil";
+import React from "react";
+import { apolloClient } from "../lib/apolloClient";
+import { ApolloProvider } from "@apollo/client";
+import { RecoilRoot } from "recoil";
 import { ChakraProvider } from "@chakra-ui/react";
-import { signedInState } from "../store/state";
+import { AuthProvider } from "../providers/AuthProvider";
 
 function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = useState(true);
-  const setIsSignedIn = useSetRecoilState(signedInState);
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      setIsSignedIn(!!user);
-      setLoading(false);
-    });
-  }, []);
-
-  // TODO ロード画面を作る
-  if (loading) return <div>...loading</div>;
-
-  return <Component {...pageProps} />;
+  return (
+    <AuthProvider>
+      <ApolloProvider client={apolloClient}>
+        <RecoilRoot>
+          <ChakraProvider>
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </RecoilRoot>
+      </ApolloProvider>
+    </AuthProvider>
+  );
 }
 
-export default (props) => {
-  return (
-    <RecoilRoot>
-      <ChakraProvider>
-        <MyApp {...props} />
-      </ChakraProvider>
-    </RecoilRoot>
-  );
-};
+export default MyApp;

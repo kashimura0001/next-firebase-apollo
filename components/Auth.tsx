@@ -1,13 +1,15 @@
 import Router from "next/router";
 import { Route } from "../config/routes";
-import { useRecoilState } from "recoil";
-import { signedInState } from "../store/state";
+import { useAuth } from "../hooks/useAuth";
 
 export const Auth = ({ children }) => {
   // TODO オンボーディングが完了しているか確認する処理を入れる
-  const [isSignedIn] = useRecoilState(signedInState);
+  const { loading, user } = useAuth();
 
-  if (!isSignedIn && typeof window !== "undefined") {
+  // TODO: ローディングページを追加する
+  if (loading) return <div>...loading</div>;
+
+  if (!user && typeof window !== "undefined") {
     Router.push(Route.SIGN_IN);
     return null;
   }

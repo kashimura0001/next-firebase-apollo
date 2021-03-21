@@ -9,14 +9,19 @@ import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import { PasswordInput } from "../../components/PasswordInput";
 import Link from "next/link";
 import { Route } from "../../config/routes";
+import { useAuth } from "../../hooks/useAuth";
+import Router from "next/router";
 
 const SignIn: VFC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signInEmail } = useAuth();
 
-  const handleSubmit = () => {
-    // TODO: ログイン処理を実装する
-    alert("hoge");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await signInEmail(email, password);
+    // TODO: サインインの処理を書く、遷移先を変更する
+    await Router.push(Route.ONBOARDING);
   };
 
   return (

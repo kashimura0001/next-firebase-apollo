@@ -9,13 +9,18 @@ import { Flex, Box, Button, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { Auth } from "../../components/Auth";
 import { Route } from "../../config/routes";
+import { useAuth } from "../../hooks/useAuth";
 
 const Onboarding: VFC = () => {
   const [name, setName] = useState("");
+  const { signOut } = useAuth();
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     // TODO: プロフィール登録処理を実装する
-    alert("hoge");
+
+    // TODO 消す
+    signOut();
   };
 
   return (
