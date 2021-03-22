@@ -1,6 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import firebaseClient from "../lib/firebaseClient";
-import nookies from "nookies";
 
 type AuthContextType = {
   loading: boolean;
@@ -17,26 +16,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<firebaseClient.User | null>(null);
 
   useEffect(() => {
-    return firebaseClient.auth().onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        const token = await user.getIdToken();
-        nookies.set(undefined, "token", token, { path: "/" });
-      } else {
-        setUser(null);
-        nookies.set(undefined, "token", "", { path: "/" });
-      }
+    return firebaseClient.auth().onAuthStateChanged((user) => {
+      setUser(user);
       setLoading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    const handle = setInterval(async () => {
-      const user = firebaseClient.auth().currentUser;
-      if (user) await user.getIdToken(true);
-    }, 10 * 60 * 1000);
-
-    return () => clearInterval(handle);
   }, []);
 
   const signInEmail = async (email: string, password: string) => {

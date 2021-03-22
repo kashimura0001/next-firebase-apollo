@@ -5,15 +5,12 @@ import {
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
-import { parseCookies } from "nookies";
+import firebaseClient from "./firebaseClient";
 
 const httpLink = new HttpLink({ uri: process.env.NEXT_PUBLIC_GRAPHQL_URL });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const cookies = parseCookies();
-  const token = cookies.token;
-
-  console.log(token);
+  const token = firebaseClient.auth().currentUser?.getIdToken(true);
 
   operation.setContext({
     headers: {
